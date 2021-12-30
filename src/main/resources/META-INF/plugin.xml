@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>com.cnoke.changefile.name</id>
+    <name>修改文件名</name>
+    <vendor email="1093757107@qq.com">黄辉</vendor>
+
+    <description>遍历修改文件名</description>
+
+    <change-notes>第一版本</change-notes>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends> // AS相关
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="changfilename" class="com.cnoke.changefile.ChangFileNameAction" text="替换文件名"
+                description="替换文件名">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
+        </action>
+    </actions>
+</idea-plugin>
