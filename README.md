@@ -70,8 +70,83 @@ intellij version根据Android studio配置
 ```
 ### 3. 创建包结构
 在/src/main/下面创建java文件夹。添加包com.cnoke.changefile
-## 2. 同步工程
+## 3. 同步工程
 点击Gradle Sync同步工程, 同步由于要下载 build.gradle中配置的 intellij version '2020.3'。时间可能比较久
 
+## 4. 创建菜单项（Action）
 
-​                                               
+1. 在com.cnoke.changefile文件夹上右键，选择New > Plugin Devkit > Action  
+
+   ![20211230214451.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230214451.png)
+
+2. 填入id calss Name等信息，Class Name是自动生成的类名。Name插件名。Group是插件入口，本插件需求是选择目录后修改文件名。因此这边选择ProjectViewPopuoMenu放在Replace File后面
+
+   ![20211230220442.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230220442.png)                                       
+
+生成如下Action代码
+
+![20211230221040.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230221040.png)
+
+在project目录上鼠标右键，点击（替换文件名）会调用上述ChangeFileNameAction中的actionPerformed。
+
+因此我们在此方法中弹出搜索文件替换文件的Dialog
+
+## 5. 创建Dialog
+
+1. 创建view文件夹，在view文件夹上右键，选择New > Swing UI Designer > Create Dialog Class
+
+   ![20211230221717.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230221717.png)
+
+2. 输入类名，取消勾选项目，点击OK
+
+   ![20211230222440.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230222440.png)
+
+3. 生成from文件，和Dialog.java文件。（java改为kt文件，可不改）
+
+4. 将生成的DIalog改为DialogWrapper其他代码删除
+
+   ![20211230222937.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230222937.png)
+
+5. 点击from，修改布局。点击palette中元素放入布局中
+
+   ![](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230223619.png)
+
+6. 修改Dialog.kt中代码获取布局中对于控件。布局中的field name和kt中字段要一致。并且kt中字段必须public可修改。swing会自动把from中控件实例化给kt中字段。
+
+   ![](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230223955.png)
+
+   ![](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230224154.png)
+
+7. 将from中父布局给kt中createCenterPanel() return
+
+```kotlin
+   override fun createCenterPanel(): JComponent? {
+           title = "工具"
+           setOKButtonText("替换")
+           setCancelButtonText("取消")
+           scrollPane!!.viewport.view = mapperList
+           return contentPane
+       }
+   ```
+
+## 6. 搜索目录下文件
+
+ ```kotlin
+ VfsUtilCore.iterateChildrenRecursively(it, { filter->
+   !filterFolder(filter)
+}, { content->
+   if(content.name.contains(searchText)){
+      externalFiles.add(content)
+      showTexts.add( "${content.path} → ${content.name}")
+   }
+   true
+})  
+```
+
+## 7.修改文件名
+
+```kotlin
+ VirtualFile.rename()
+```
+
+   
