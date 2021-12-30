@@ -5,7 +5,7 @@
 
 ![20211230165902.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230165902.png)
 
-![20211230164607.png](E:\github\readmeimg\replacefilename-studio-plugin\20211230164607.png)
+![20211230164607.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230164607.png)
 
 ## 仓库地址
 [GitHub](https://github.com/cnoke/replacefilename-studio-plugin.git)
