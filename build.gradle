@@ -4,7 +4,6 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
 }
 
-group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -12,12 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-//    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8" //kotlin引入
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -34,10 +28,6 @@ compileTestKotlin {
 }
 patchPluginXml {
     changeNotes "一键修改文件名"
-    sinceBuild = '191' // 插件适用的IDEA版本范围，此范围基本涵盖了Android Studio最近两三年的版本
+    sinceBuild = '191' // 插件适用的IDEA版本范围
     untilBuild = '212.*'
-}
-
-test {
-    useJUnitPlatform()
 }
