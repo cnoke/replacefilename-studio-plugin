@@ -16,6 +16,7 @@
 2. 左侧选择Gradle类型，右侧指定JDK版本为1.8，勾选Java，Intellij Platform Plugin和Kotlin/JVM，点击Next
 
 ![20211230165123.png](https://raw.githubusercontent.com/cnoke/readmeimg/main/replacefilename-studio-plugin/20211230165123.png)
+
 3. 输入工程名称changeFileName，点击Next
 
 ![20211230165321.png](https://raw.githubusercontent.com/cnoke/readmeimg/main/replacefilename-studio-plugin/20211230165321.png)
