@@ -70,10 +70,8 @@ intellij version根据Android studio配置
 ```
 ### 3. 创建包结构
 在/src/main/下面创建java文件夹。添加包com.cnoke.changefile
-## 3. 同步工程
-点击Gradle Sync同步工程, 同步由于要下载 build.gradle中配置的 intellij version '2020.3'。时间可能比较久
 
-## 4. 创建菜单项（Action）
+## 3. 创建菜单项（Action）
 
 1. 在com.cnoke.changefile文件夹上右键，选择New > Plugin Devkit > Action  
 
@@ -91,7 +89,7 @@ intellij version根据Android studio配置
 
 因此我们在此方法中弹出搜索文件替换文件的Dialog
 
-## 5. 创建Dialog
+## 4. 创建Dialog
 
 1. 创建view文件夹，在view文件夹上右键，选择New > Swing UI Designer > Create Dialog Class
 
@@ -127,9 +125,9 @@ intellij version根据Android studio配置
            scrollPane!!.viewport.view = mapperList
            return contentPane
        }
-   ```
+```
 
-## 6. 搜索目录下文件
+## 5. 搜索目录下文件
 
  ```kotlin
  VfsUtilCore.iterateChildrenRecursively(it, { filter->
@@ -141,12 +139,21 @@ intellij version根据Android studio配置
    }
    true
 })  
-```
+ ```
 
-## 7.修改文件名
+## 6.修改文件名
 
 ```kotlin
  VirtualFile.rename()
 ```
+## 7.编译使用插件
+1. 点击buildPlugin编译插件
 
-   
+2. 编译完成，生成build/libs/changeFileName-1.0-SNAPSHOT.jar
+
+3. 将changeFileName-1.0-SNAPSHOT.jar丢入Android studio编辑框，点击重启确认按钮
+
+   ![20211231091955.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211231091955.png)
+
+4. 重启后，右键project中目录，出现（替换文件名）点击出现弹窗进行使用
+
