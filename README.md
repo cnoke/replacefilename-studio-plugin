@@ -13,7 +13,7 @@
 # 开发流程
 ## 1. 初始化工程
 1. 打开IntelliJ IDEA ，点击New Project
-2. 左侧选择Gradle类型，右侧指定JDK版本为1.8，勾选Java，Intellij Platform Plugin和Kotlin/JVM，点击Next
+2. 左侧选择Gradle类型，右侧指定JDK版本为1.8，勾选Java，Intellij Platform Plugin和Kotlin/JVM(不需要Kotlin开发就无需勾选)，点击Next
 
 ![20211230165123.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230165123.png)
 
