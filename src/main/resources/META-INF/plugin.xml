@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.cnoke.changefile.name</id>
-    <name>修改文件名</name>
+    <name>Replace file name</name>
     <vendor email="1093757107@qq.com">黄辉</vendor>
 
     <description>遍历修改文件名</description>
@@ -17,8 +17,8 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="changfilename" class="com.cnoke.changefile.ChangFileNameAction" text="替换文件名"
-                description="替换文件名">
+        <action id="changfilename" class="com.cnoke.changefile.ChangFileNameAction" text="Replace file name"
+                description="Replace file name">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
         </action>
     </actions>

@@ -92,7 +92,7 @@ class EditDialog(private val event: AnActionEvent) : DialogWrapper(event.project
 
     override fun doOKAction() {
         if(search!!.text.isNullOrEmpty() || replace!!.text.isNullOrEmpty()){
-            Messages.showMessageDialog("请输入搜索值和替换值","",null)
+            Messages.showMessageDialog("Please enter search values and replacement values","",null)
             return
         }
         if (externalFiles.isNotEmpty()) {
@@ -104,7 +104,7 @@ class EditDialog(private val event: AnActionEvent) : DialogWrapper(event.project
                 }
             }
         }
-        Messages.showInfoMessage("替换成功!", "")
+        Messages.showInfoMessage("Replacement succeeded!", "")
         dispose()
     }
 
@@ -113,9 +113,9 @@ class EditDialog(private val event: AnActionEvent) : DialogWrapper(event.project
     }
 
     override fun createCenterPanel(): JComponent? {
-        title = "工具"
-        setOKButtonText("替换")
-        setCancelButtonText("取消")
+        title = "tool"
+        setOKButtonText("Replace")
+        setCancelButtonText("Cancel")
         scrollPane!!.viewport.view = mapperList
         return contentPane
     }

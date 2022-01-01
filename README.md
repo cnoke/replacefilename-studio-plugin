@@ -3,9 +3,7 @@
 ## 功能说明
 > 对安卓工程选中目录下，文件以及文件夹，进行搜索并且替换名称
 
-![20211230165902.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230165902.png)
-
-![20211230164607.png](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/20211230164607.png)
+![plugins_user.gif](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/plugins_user.gif)
 
 ## 仓库地址
 [GitHub](https://github.com/cnoke/replacefilename-studio-plugin.git)
@@ -130,16 +128,24 @@ intellij version根据Android studio配置
 ## 5. 搜索目录下文件
 
  ```kotlin
- VfsUtilCore.iterateChildrenRecursively(it, { filter->
-   !filterFolder(filter)
-}, { content->
-   if(content.name.contains(searchText)){
-      externalFiles.add(content)
-      showTexts.add( "${content.path} → ${content.name}")
-   }
-   true
-})  
+projectFile?.let {
+            VfsUtilCore.iterateChildrenRecursively(it, { filter->
+                !filterFolder(filter)
+            }, { content->
+                if(content.name.contains(searchText)){
+                    externalFiles.add(content)
+                    showTexts.add( "${content.path} → ${content.name}")
+                }
+                true
+            })
+        }
  ```
+
+projectFile为鼠标选中的目录地址，通过CommonDataKeys.VIRTUAL_FILE.getData(event.dataContext)获取
+
+
+
+filter为过滤器，过滤哪些文件不需要。content为搜索过滤之后返回的文件。这里我们根据文件名称是否含有我们输入的文字进行判断是否匹配，如果匹配加入列表，显示在界面上。
 
 ## 6.修改文件名
 
@@ -157,3 +163,11 @@ intellij version根据Android studio配置
 
 4. 重启后，右键project中目录，出现（替换文件名）点击出现弹窗进行使用
 
+### 8.提交插件到IDEA商城
+
+点击注册IDEA账号，可以用github账号直接登录
+[IDEA](https://plugins.jetbrains.com/)
+
+选择Upload Plugin，上传编译出来的jar,或者zip文件，填写资料。等待审核两个工作日后，就可以在Android studio插件商城搜索到你的插件。
+
+![plugins_upload.gif](https://gitee.com/cnoke_301/readmeimg/raw/master/replacefilename-studio-plugin/plugins_upload.gif)

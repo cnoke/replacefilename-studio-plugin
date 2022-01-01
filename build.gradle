@@ -27,7 +27,7 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 patchPluginXml {
-    changeNotes "一键修改文件名"
+    changeNotes "Modify the file name with one click"
     sinceBuild = '191' // 插件适用的IDEA版本范围
     untilBuild = '212.*'
 }
